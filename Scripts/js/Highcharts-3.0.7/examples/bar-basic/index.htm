@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+		var anos=["2011","2012"];
+		var impo=[1000,2000];
+		var expo=[4000,5000];
+		
+		var obj = [{
+		name: '2009',
+		data : [1000,200]
+		},
+		{
+		name: '2010',
+		data : [7890,400]
+		}
+		];
+		
+		
+		
+		var data1 = [];
+		var data2 = [];
+		for(var i = 0; i< impo.length; i++){
+			data1.push(impo[i]);
+			data1.push(expo[i]);
+			data2.push(impo[i+1]);
+			data2.push(expo[i+1]);
+			i++;
+		}
+		
+		console.log(data1);
+		console.log(data2);
+		
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Expo - Impo puertos'
+            },
+            subtitle: {
+                text: 'Source: BD OBCI'
+            },
+            xAxis: {
+                categories: ['Importaciones','Exportaciones'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Expo vs Impo (millions)',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' millions'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: obj
+        });
+    });
+    
+
+		</script>
+	</head>
+	<body>
+	<script src="../../js/highcharts.js"></script>
+	<script src="../../js/modules/exporting.js"></script>
+
+	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
